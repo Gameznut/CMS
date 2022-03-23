@@ -6,7 +6,7 @@ const app = express()
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('hello world')
+    res.send('hello worlds')
 })
 
 app.listen(PORT, ()=>{
