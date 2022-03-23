@@ -1,6 +1,7 @@
 const express = require('express');
 // const mongoose = require('mongoose');
 // const {PORT} = require('./config/config')
+// const tested = require('./models/PostModel')
 const {PORT} = require('./models/PostModel')
 const path = require('path');
 const {create} = require('express-handlebars');
