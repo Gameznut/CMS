@@ -1,19 +1,13 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const {MONGODBURI} = require('./config/config')
-const PORT = process.env.PORT || 3000
+// const mongoose = require('mongoose');
+// const {PORT} = require('./config/config')
+const {PORT} = require('./models/PostModel')
 const path = require('path');
 const {create} = require('express-handlebars');
 const app = express()
 
 // conneting to mogodb
-mongoose.connect(MONGODBURI, { useNewUrlParser: true, useUnifiedTopology: true })
-        .then(()=>{
-            console.log('connected to db');
-        })
-        .catch((error)=>{
-            console.log(error.message);
-        })
+
 
 app.use(express.json())
 app.use(express.urlencoded({
@@ -22,14 +16,15 @@ app.use(express.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')))
 
 // set up views engine
+// folder must be called views
 app.set('view engine', 'handlebars')
+
+// rendering from the layouts folder
 app.engine('handlebars', create({defaultLayout: 'default'}).engine);
 
-
-app.use('/', (req, res) => {
-    // res.send('hello world')
-    res.render('default/index')
-})
+// custom routes
+const defaultRoutes = require('./routes/defaultRoutes')
+app.use('/', defaultRoutes)
 
 app.listen(PORT, ()=>{
     console.log(`The ${PORT} is active`);
