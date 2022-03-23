@@ -25,7 +25,11 @@ app.engine('handlebars', create({defaultLayout: 'default'}).engine);
 
 // custom routes
 const defaultRoutes = require('./routes/defaultRoutes')
+const adminRoutes = require('./routes/adminRoutes')
+
 app.use('/', defaultRoutes)
+app.use('/admin', adminRoutes)
+
 
 app.listen(PORT, ()=>{
     console.log(`The ${PORT} is active`);
