@@ -32,6 +32,6 @@ const PostSchema = new Schema({
 })
 
 module.exports = {
-    testing : mongoose.model('post', PostSchema),
+    Post : mongoose.model('post', PostSchema),
     PORT
 }
