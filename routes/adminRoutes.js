@@ -17,8 +17,21 @@ router.route('/posts')
 router.route('/posts/create')
     .get(adminController.createPost)
     .post(adminController.submitPost)
+
+router.route('/posts/edit/:id')
+    .get(adminController.editPost)
+    .put(adminController.updatePost)
     
+router.route('/posts/delete/:id')
+    .delete(adminController.deletePost)
 
 router.route('/category')
-    .get(adminController.category)
+    .get(adminController.getCategory)
+
+router.route('/category/create')
+    .post(adminController.submitCategory)
+
+router.route('/category/edit/:id')
+    .get(adminController.editCategory)
+    .post(adminController.updateCategory)
 module.exports = router

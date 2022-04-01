@@ -12,7 +12,7 @@
 
 
             <div class="card mb-4">
-                <img class="card-img-top" src="https://placeimg.com/750/300/tech" alt="Card image cap">
+                <img class="card-img-top" src="{{ file }}" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">{{title}}</h2>
                     <p class="card-text">{{description}}</p>
@@ -60,7 +60,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <ul class="list-unstyled mb-0">
+                        <ul class="list-unstyled  mb-0">
                             {{#each categories}}
                                 <li>
                                     <a href="#">{{title}}</a>
