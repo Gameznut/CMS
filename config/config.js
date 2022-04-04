@@ -1,11 +1,11 @@
 require('dotenv').config()
 module.exports = {
-    MONGODBURI : process.env.MONGODBURI /* || 'mongodb://localhost:27017/CMS' */,
-    PORT: process.env.PORT || 3001,
+    MONGODBURI : /*'mongodb://localhost:27017/CMS' || */process.env.MONGODBURI,
+    PORT: process.env.PORT || 3002,
     globalVariable: (req, res, next) => {
         res.locals.success_message = req.flash('success-message');
         res.locals.error_message = req.flash('error-message');        
-        
+        res.locals.user = req.user || null 
         next();
     }
 }

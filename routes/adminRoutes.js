@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router()
 const adminController = require('../controllers/adminController')
+const {isUserAuthenticated} = require('../config/customFuctions')
 
-router.all('/*', (req, res, next) => {
+
+router.all('/*',isUserAuthenticated, (req, res, next) => {
+
     req.app.locals.layout = 'admin'
 
     next()
@@ -34,4 +37,7 @@ router.route('/category/create')
 router.route('/category/edit/:id')
     .get(adminController.editCategory)
     .post(adminController.updateCategory)
+
+router.route('/comment')
+    .get(adminController.getComment)
 module.exports = router

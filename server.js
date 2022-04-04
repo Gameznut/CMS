@@ -9,6 +9,8 @@ const {globalVariable} = require('./config/config')
 const methodOverride = require('method-override');
 const {selectOption} = require('./config/customFuctions')
 const fileUpload = require('express-fileupload')
+const cookieParser = require('cookie-parser');
+const passport = require('passport');
 
 /* fixing Handlebars: Access has been denied to resolve the property
 const Handlebars = require('handlebars')
@@ -22,13 +24,13 @@ app.use(express.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')))
 
 /*  Flash and Session*/
-app.use(session({
-    secret: 'anysecret',
-    saveUninitialized: true,
-    resave: true
-}));
-// app.use(express.cookieParser('keyboard cat'))
+app.use(cookieParser())
+app.use(session({ secret: 'keyboard', resave: true, saveUninitialized: true }));
 app.use(flash())
+
+// Passport Initializes
+app.use(passport.initialize())
+app.use(passport.session())
 
 // use global variable
 app.use(globalVariable)

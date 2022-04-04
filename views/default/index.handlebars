@@ -1,3 +1,12 @@
+    {{#if success_message  }}
+        <div class="alert alert-success alert-dismissible fade show mt-2 auto-hide" role="alert">
+            <strong>{{success_message}}</strong>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if  }}
 <div class="row">
 
     <!-- Blog Entries Column -->
@@ -16,7 +25,7 @@
                 <div class="card-body">
                     <h2 class="card-title">{{title}}</h2>
                     <p class="card-text">{{description}}</p>
-                    <a href="#" class="btn btn-primary">Read More &rarr;</a>    
+                    <a href="/post/{{id}}" class="btn btn-primary">Read More &rarr;</a>    
                 </div>                
                 <div class="card-footer text-muted">
                     Posted on {{creationDate}} by

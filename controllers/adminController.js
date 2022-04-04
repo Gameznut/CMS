@@ -1,5 +1,6 @@
 const Post = require('../models/PostModel').Post;
 const Category = require('../models/CategoryModel')
+const Comment = require('../models/CommentModel')
 const {isEmpty} = require('../config/customFuctions.js')
 module.exports = {
     index: (req, res) => {
@@ -51,7 +52,7 @@ module.exports = {
             req.flash('success-message', 'Post created successfully.');
             res.redirect('/admin/posts')
         }).catch((err) => {
-            req.flash('error-message', 'Post failled')
+            req.flash('error-message', 'Post failed')
             res.redirect('/admin/posts/create')
         });
     },
@@ -142,6 +143,15 @@ module.exports = {
         }
 
 
-    }
+    },
+
+    // comment
+    getComment: (req, res) => {
+        Comment.find().populate('user').then((comment) => {
+            res.render('admin/comments/index', {
+                comments: comment
+            })
+        })
+    },
 
 }
